@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Boid.h"
 
 class Application
 {
@@ -8,5 +8,6 @@ public:
 public:
 	void update();
 	void render(sf::RenderWindow& window);
+private:
 };
 
