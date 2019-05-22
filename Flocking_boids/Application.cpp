@@ -2,7 +2,8 @@
 #include "Application.h"
 
 
-Application::Application() {
+Application::Application()
+: m_visionRange(20) {
 	srand(time(NULL));
 }
 
@@ -14,10 +15,8 @@ void Application::update(const sf::RenderWindow& window) {
 	}
 	m_mousePressedLast = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 	for (auto& boid : m_boids) {
-		Vec2 direction(0.5,0.2);
-		for (auto& other : m_boids) {
-			
-		}
+		Vec2 direction(0,0);
+		direction += this->getAllignment(boid);
 		boid.update(direction);
 	}
 }
@@ -26,4 +25,23 @@ void Application::render(sf::RenderWindow& window) {
 	for (auto& boid : m_boids) {
 		boid.render(window);
 	}
+}
+
+const Vec2& Application::getAllignment(const Boid& boid) const {
+	Vec2 sum(0,0);
+	int neighborCount = 0;
+	for (auto& other : m_boids) {
+		if (boid.getPos() != other.getPos()) {
+			if (boid.getDistance(other) < m_visionRange) {
+				sum += other.getDirection();
+				neighborCount++;
+			}
+		}
+	}
+	if (neighborCount == 0) {
+		return sum;
+	}
+	sum /= neighborCount;
+	sum.normalize();
+	return sum;
 }

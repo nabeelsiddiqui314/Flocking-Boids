@@ -8,43 +8,43 @@ struct Vec2 {
 	operator sf::Vector2f() {
 		return { x, y };
 	}
-	const Vec2& operator+ (const Vec2& other) const {
+	const Vec2 operator+ (const Vec2& other) const {
 		return {x + other.x, y + other.y};
 	}
-	const Vec2& operator- (const Vec2& other) const {
+	const Vec2 operator- (const Vec2& other) const {
 		return { x - other.x, y - other.y };
 	}
-	const Vec2& operator* (const Vec2& other) const {
+	const Vec2 operator* (const Vec2& other) const {
 		return { x * other.x, y * other.y };
 	}
-	const Vec2& operator/ (const Vec2& other) const {
+	const Vec2 operator/ (const Vec2& other) const {
 		return { x / other.x, y / other.y };
 	}
 
-	const Vec2& operator+ (float val) const {
+	const Vec2 operator+ (float val) const {
 		return { x + val, y + val };
 	}
-	const Vec2& operator- (float val) const {
+	const Vec2 operator- (float val) const {
 		return { x - val, y - val };
 	}
-	const Vec2& operator* (float val) const {
+	const Vec2 operator* (float val) const {
 		return { x * val, y * val };
 	}
-	const Vec2& operator/ (float val) const {
+	const Vec2 operator/ (float val) const {
 		val += 0.1f;
 		return { x / val, y / val };
 	}
 
-	void operator+= (const Vec2& other) {
+	void operator+= (const Vec2 other) {
 		*this = *this + other;
 	}
-	void operator-= (const Vec2& other) {
+	void operator-= (const Vec2 other) {
 		*this = *this - other;
 	}
-	void operator*= (const Vec2& other) {
+	void operator*= (const Vec2 other) {
 		*this = *this * other;
 	}
-	void operator/= (const Vec2& other) {
+	void operator/= (const Vec2 other) {
 		*this = *this / other;
 	}
 
@@ -59,6 +59,10 @@ struct Vec2 {
 	}
 	void operator/= (float val) {
 		*this = *this / val;
+	}
+
+	bool operator !=(const Vec2 other) const {
+		return (x != other.x || y != other.y);
 	}
 
 	void normalize() {

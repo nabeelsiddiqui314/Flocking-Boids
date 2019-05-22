@@ -10,8 +10,9 @@ public:
 	void update(const Vec2& dir);
 	void render(sf::RenderWindow& window);
 
-	const Vec2& getPos() const;
+	float getDistance(const Boid& boid) const;
 	const Vec2& getDirection() const;
+	const Vec2 getPos() const;
 private:
 	float getAngle(const Vec2& dir);
 private:

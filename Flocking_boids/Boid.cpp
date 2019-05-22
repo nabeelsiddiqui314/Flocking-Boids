@@ -24,8 +24,12 @@ void Boid::render(sf::RenderWindow& window) {
 	window.draw(m_boid);
 }
 
-const Vec2& Boid::getPos() const {
-	return { m_boid.getPosition().x, m_boid.getPosition().x };
+float Boid::getDistance(const Boid& boid) const {
+	return sqrt(pow(this->getPos().x - boid.getPos().x, 2) + pow(this->getPos().y - boid.getPos().y, 2));
+}
+
+const Vec2 Boid::getPos() const {
+	return { m_boid.getPosition().x, m_boid.getPosition().y };
 }
 
 const Vec2& Boid::getDirection() const {
