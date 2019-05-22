@@ -31,6 +31,7 @@ struct Vec2 {
 		return { x * val, y * val };
 	}
 	const Vec2& operator/ (float val) const {
+		val += 0.1f;
 		return { x / val, y / val };
 	}
 

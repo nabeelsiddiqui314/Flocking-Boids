@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "Vec2.h"
 
 class Boid
@@ -6,16 +7,16 @@ class Boid
 public:
 	Boid(const Vec2& pos, const Vec2& dir);
 public:
-	void update();
+	void update(const Vec2& dir);
 	void render(sf::RenderWindow& window);
 
+	const Vec2& getPos() const;
 	const Vec2& getDirection() const;
 private:
 	float getAngle(const Vec2& dir);
 private:
 	sf::Sprite m_boid;
-	sf::Texture m_texture;
-	std::vector<Boid> m_neighbors;
+	std::shared_ptr<sf::Texture> m_texture;
 	Vec2 m_direction;
 	float m_velocity;
 };
