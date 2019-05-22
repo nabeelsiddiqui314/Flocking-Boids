@@ -9,6 +9,7 @@ public:
 public:
 	void update(const Vec2& dir);
 	void render(sf::RenderWindow& window);
+	void setPosition(const Vec2& pos);
 
 	float getDistance(const Boid& boid) const;
 	const Vec2& getDirection() const;
