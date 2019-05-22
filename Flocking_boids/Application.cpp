@@ -46,7 +46,7 @@ const Vec2& Application::getAllignment(const Boid& boid) const {
 	for (auto& other : m_boids) {
 		if (boid.getPos() != other.getPos()) {
 			if (boid.getDistance(other) < m_visionRange) {
-				vec += other.getPos();
+				vec += other.getDirection();
 				neighborCount++;
 			}
 		}
