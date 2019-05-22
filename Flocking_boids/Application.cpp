@@ -18,6 +18,7 @@ void Application::update(const sf::RenderWindow& window) {
 		Vec2 direction(0,0);
 		direction += this->getAllignment(boid);
 		direction += this->getCohesion(boid);
+		direction += this->getCrowdSeperation(boid);
 		boid.update(direction);
 		if (boid.getPos().x > window.getSize().x) {
 			boid.setPosition({ 0, boid.getPos().y });
@@ -74,6 +75,26 @@ const Vec2& Application::getCohesion(const Boid& boid) const {
 		}
 		vec /= neighborCount;
 		vec -= boid.getPos();
+		vec.normalize();
+		return vec;
+	}
+}
+
+const Vec2& Application::getCrowdSeperation(const Boid& boid) const {
+	Vec2 vec(0, 0);
+	int neighborCount = 0;
+	for (auto& other : m_boids) {
+		if (boid.getPos() != other.getPos()) {
+			if (boid.getDistance(other) < m_visionRange) {
+				vec += (other.getPos() - boid.getPos());
+				neighborCount++;
+			}
+		}
+		if (neighborCount == 0) {
+			return vec;
+		}
+		vec /= neighborCount;
+		vec *= -1;
 		vec.normalize();
 		return vec;
 	}

@@ -11,6 +11,7 @@ public:
 private:
 	const Vec2& getAllignment(const Boid& boid) const;
 	const Vec2& getCohesion(const Boid& boid) const;
+	const Vec2& getCrowdSeperation(const Boid& boid) const;
 private:
 	std::vector<Boid> m_boids;
 	bool m_mousePressedLast = false;
