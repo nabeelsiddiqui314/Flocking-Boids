@@ -5,15 +5,17 @@
 class Boid
 {
 public:
-	Boid(const Vec2& pos, const Vec2& dir);
+	Boid(const Vec2& pos, const Vec2& dir, const sf::Color& color);
 public:
 	void update(const Vec2& dir);
 	void render(sf::RenderWindow& window);
-	void setPosition(const Vec2& pos);
+	void setPos(const Vec2& pos);
+	void setColor(const sf::Color& color);
 
 	float getDistance(const Boid& boid) const;
 	const Vec2& getDirection() const;
 	const Vec2 getPos() const;
+	const sf::Color& getColor() const;
 private:
 	float getAngle(const Vec2& dir);
 private:
