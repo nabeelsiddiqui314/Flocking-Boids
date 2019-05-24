@@ -51,7 +51,7 @@ void Application::render(sf::RenderWindow& window) {
 	}
 }
 
-const Vec2& Application::getAllignment(const Boid& boid) const {
+const Vec2 Application::getAllignment(const Boid& boid) const {
 	Vec2 vec(0,0);
 	int neighborCount = 0;
 	for (auto& other : m_boids) {
@@ -74,7 +74,7 @@ const Vec2& Application::getAllignment(const Boid& boid) const {
 	return vec;
 }
 
-const Vec2& Application::getCohesion(const Boid& boid) const {
+const Vec2 Application::getCohesion(const Boid& boid) const {
 	Vec2 vec(0, 0);
 	int neighborCount = 0;
 	for (auto& other : m_boids) {
@@ -98,7 +98,7 @@ const Vec2& Application::getCohesion(const Boid& boid) const {
 	return vec;
 }
 
-const Vec2& Application::getCrowdSeperation(const Boid& boid) const {
+const Vec2 Application::getCrowdSeperation(const Boid& boid) const {
 	Vec2 vec(0, 0);
 	int neighborCount = 0;
 	for (auto& other : m_boids) {
@@ -118,7 +118,7 @@ const Vec2& Application::getCrowdSeperation(const Boid& boid) const {
 	return vec;
 }
 
-const Vec2& Application::getPredatorAvoidance(const Boid& boid) const {
+const Vec2 Application::getPredatorAvoidance(const Boid& boid) const {
 	Vec2 vec(0,0);
 	int predatorCount = 0;
 	if (!boid.isPredator()) {
