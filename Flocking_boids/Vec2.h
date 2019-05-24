@@ -8,6 +8,7 @@ struct Vec2 {
 	operator sf::Vector2f() {
 		return { x, y };
 	}
+
 	const Vec2 operator+ (const Vec2& other) const {
 		return {x + other.x, y + other.y};
 	}

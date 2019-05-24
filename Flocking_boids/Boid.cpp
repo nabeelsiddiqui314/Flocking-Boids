@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Boid.h"
 
-Boid::Boid(const Vec2& pos, const Vec2& dir, const sf::Color& color)
-: m_direction(dir), m_velocity(2) {
+Boid::Boid(const Vec2& pos, const Vec2& dir, bool isPredator)
+: m_direction(dir), m_velocity(2), m_isPredator(isPredator) {
 	m_texture = std::make_shared<sf::Texture>();
 	m_texture->loadFromFile("res/boid.png");
 	m_boid.setTexture(*m_texture);
@@ -11,7 +11,6 @@ Boid::Boid(const Vec2& pos, const Vec2& dir, const sf::Color& color)
 		             m_boid.getGlobalBounds().height / 2);
 	m_direction.normalize();
 	m_boid.setRotation(this->getAngle(m_direction) + 90);
-	m_boid.setColor(color);
 }
 
 void Boid::update(const Vec2& dir) {
@@ -43,6 +42,10 @@ const Vec2 Boid::getPos() const {
 
 const sf::Color& Boid::getColor() const {
 	return m_boid.getColor();
+}
+
+bool Boid::isPredator() const {
+	return m_isPredator;
 }
 
 const Vec2& Boid::getDirection() const {

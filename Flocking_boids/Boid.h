@@ -5,7 +5,7 @@
 class Boid
 {
 public:
-	Boid(const Vec2& pos, const Vec2& dir, const sf::Color& color);
+	Boid(const Vec2& pos, const Vec2& dir, bool isPredator);
 public:
 	void update(const Vec2& dir);
 	void render(sf::RenderWindow& window);
@@ -16,6 +16,7 @@ public:
 	const Vec2& getDirection() const;
 	const Vec2 getPos() const;
 	const sf::Color& getColor() const;
+	bool isPredator() const;
 private:
 	float getAngle(const Vec2& dir);
 private:
@@ -23,4 +24,5 @@ private:
 	std::shared_ptr<sf::Texture> m_texture;
 	Vec2 m_direction;
 	float m_velocity;
+	bool m_isPredator;
 };
