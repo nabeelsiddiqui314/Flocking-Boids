@@ -33,7 +33,11 @@ void Boid::setColor(const sf::Color& color) {
 }
 
 float Boid::getDistance(const Boid& boid) const {
-	return sqrt(pow(this->getPos().x - boid.getPos().x, 2) + pow(this->getPos().y - boid.getPos().y, 2));
+	return this->getDistance(boid.getPos());
+}
+
+float Boid::getDistance(const Vec2& pos) const {
+	return sqrt(pow(this->getPos().x - pos.x, 2) + pow(this->getPos().y - pos.y, 2));
 }
 
 const Vec2 Boid::getPos() const {

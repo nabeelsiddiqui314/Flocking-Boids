@@ -13,6 +13,7 @@ public:
 	void setColor(const sf::Color& color);
 
 	float getDistance(const Boid& boid) const;
+	float getDistance(const Vec2& pos) const;
 	const Vec2& getDirection() const;
 	const Vec2 getPos() const;
 	const sf::Color& getColor() const;
