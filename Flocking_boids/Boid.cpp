@@ -56,6 +56,6 @@ const Vec2& Boid::getDirection() const {
 	return m_direction;
 }
 
-float Boid::getAngle(const Vec2& dir) {
+float Boid::getAngle(const Vec2& dir) const {
 	return atan2f(dir.y, dir.x) * 57.2958f;
 }

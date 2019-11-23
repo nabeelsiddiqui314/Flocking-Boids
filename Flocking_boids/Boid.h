@@ -19,7 +19,7 @@ public:
 	const sf::Color& getColor() const;
 	bool isPredator() const;
 private:
-	float getAngle(const Vec2& dir);
+	float getAngle(const Vec2& dir) const;
 private:
 	sf::Sprite m_boid;
 	std::shared_ptr<sf::Texture> m_texture;
