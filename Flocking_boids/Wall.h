@@ -10,6 +10,6 @@ public:
 
 	void render(sf::RenderWindow& window);
 private:
-	sf::CircleShape m_circle;
+	sf::CircleShape m_wall;
 };
 
